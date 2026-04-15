@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/getassets/getassets.csproj" />
+    <Project Path="src/getinfo/getinfo.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,7 @@
+.env
+bin/
+obj/
+*.user
+.vs/
+# CLI output files
+src/**/*.json
