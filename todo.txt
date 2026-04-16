@@ -10,3 +10,9 @@ For now, just print the returned payload
 getinfo
 Same auth as getassets but instead of hardcoded endpoint 'assets' take the endpoint from parameter from commandline. 
 Also name the resulting json from the endpoint parameter
+
+
+
+Refactor
+Create a common folder and put things like auth and a generalized way of calling the api in that class libray
+Updaate getassets and getinfo to use that 
