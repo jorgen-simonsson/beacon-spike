@@ -5,8 +5,8 @@ using DotNetEnv;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("Usage: getinfo <endpoint>");
-    Console.Error.WriteLine("Example: getinfo assets");
+    await Console.Error.WriteLineAsync("Usage: getinfo <endpoint>");
+    await Console.Error.WriteLineAsync("Example: getinfo assets");
     return 1;
 }
 
@@ -16,7 +16,7 @@ var endpoint = args[0].TrimStart('/');
 var envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
 if (!File.Exists(envPath))
 {
-    Console.Error.WriteLine($".env file not found at {envPath}");
+    await Console.Error.WriteLineAsync($".env file not found at {envPath}");
     return 1;
 }
 Env.Load(envPath);
@@ -27,7 +27,7 @@ var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL")?.Trim();
 
 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(baseUrl))
 {
-    Console.Error.WriteLine("Missing required .env variables: USERNAME, PASSWORD, API_BASE_URL");
+    await Console.Error.WriteLineAsync("Missing required .env variables: USERNAME, PASSWORD, API_BASE_URL");
     return 1;
 }
 
@@ -41,7 +41,7 @@ var tokenResponse = await httpClient.PostAsJsonAsync(tokenUrl, tokenRequestBody)
 if (!tokenResponse.IsSuccessStatusCode)
 {
     var err = await tokenResponse.Content.ReadAsStringAsync();
-    Console.Error.WriteLine($"Token request failed ({tokenResponse.StatusCode}): {err}");
+    await Console.Error.WriteLineAsync($"Token request failed ({tokenResponse.StatusCode}): {err}");
     return 1;
 }
 
@@ -55,7 +55,7 @@ var response = await httpClient.GetAsync($"{baseUrl.TrimEnd('/')}/{endpoint}");
 if (!response.IsSuccessStatusCode)
 {
     var err = await response.Content.ReadAsStringAsync();
-    Console.Error.WriteLine($"GET /{endpoint} failed ({response.StatusCode}): {err}");
+    await Console.Error.WriteLineAsync($"GET /{endpoint} failed ({response.StatusCode}): {err}");
     return 1;
 }
 
@@ -64,6 +64,6 @@ var formatted = JsonSerializer.Serialize(JsonSerializer.Deserialize<JsonElement>
 var outputDir = Path.Combine(Directory.GetCurrentDirectory(), "output");
 Directory.CreateDirectory(outputDir);
 var outputFile = Path.Combine(outputDir, $"{endpoint.Replace('/', '_')}.json");
-File.WriteAllText(outputFile, formatted);
+await File.WriteAllTextAsync(outputFile, formatted);
 Console.WriteLine($"Wrote {outputFile}");
 return 0;
