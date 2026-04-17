@@ -7,6 +7,8 @@ namespace Common;
 
 public static class ApiClient
 {
+    private static readonly JsonSerializerOptions IndentedJsonOptions = new() { WriteIndented = true };
+
     public static void LoadEnv()
     {
         var envPath = Path.GetFullPath(".env");
@@ -65,7 +67,7 @@ public static class ApiClient
     {
         var formatted = JsonSerializer.Serialize(
             JsonSerializer.Deserialize<JsonElement>(payload),
-            new JsonSerializerOptions { WriteIndented = true });
+            IndentedJsonOptions);
         await File.WriteAllTextAsync(outputFile, formatted);
         await Console.Out.WriteLineAsync($"Wrote {outputFile}");
     }
