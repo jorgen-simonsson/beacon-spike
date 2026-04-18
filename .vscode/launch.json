@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: getsold",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/getsold/bin/Debug/net10.0/getsold",
+            "preLaunchTask": "build-getsold",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "C#: getassets",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/getassets/bin/Debug/net10.0/getassets",
+            "preLaunchTask": "build-getassets",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "C#: getinfo",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/getinfo/bin/Debug/net10.0/getinfo",
+            "preLaunchTask": "build-getinfo",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "C#: getprops",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/getprops/bin/Debug/net10.0/getprops",
+            "preLaunchTask": "build-getprops",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "C#: signal",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/signal/bin/Debug/net10.0/signal",
+            "preLaunchTask": "build-signal",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

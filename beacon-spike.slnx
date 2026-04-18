@@ -3,5 +3,8 @@
     <Project Path="src/common/common.csproj" />
     <Project Path="src/getassets/getassets.csproj" />
     <Project Path="src/getinfo/getinfo.csproj" />
+    <Project Path="src/getprops/getprops.csproj" />
+    <Project Path="src/getsold/getsold.csproj" />
+    <Project Path="src/signal/signal.csproj" />
   </Folder>
 </Solution>

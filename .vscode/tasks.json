@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-getsold",
+            "command": "dotnet",
+            "type": "process",
+            "args": ["build", "${workspaceFolder}/src/getsold/getsold.csproj"],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-getassets",
+            "command": "dotnet",
+            "type": "process",
+            "args": ["build", "${workspaceFolder}/src/getassets/getassets.csproj"],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-getinfo",
+            "command": "dotnet",
+            "type": "process",
+            "args": ["build", "${workspaceFolder}/src/getinfo/getinfo.csproj"],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-getprops",
+            "command": "dotnet",
+            "type": "process",
+            "args": ["build", "${workspaceFolder}/src/getprops/getprops.csproj"],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-signal",
+            "command": "dotnet",
+            "type": "process",
+            "args": ["build", "${workspaceFolder}/src/signal/signal.csproj"],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

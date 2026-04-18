@@ -63,6 +63,20 @@ public static class ApiClient
         return await response.Content.ReadAsStringAsync();
     }
 
+    public static async Task<string> PostEndpointAsync(HttpClient httpClient, string baseUrl, string endpoint, object payload)
+    {
+        var url = $"{baseUrl.TrimEnd('/')}/{endpoint.TrimStart('/')}";
+        var response = await httpClient.PostAsJsonAsync(url, payload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var err = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException($"POST /{endpoint} failed ({response.StatusCode}): {err}");
+        }
+
+        return await response.Content.ReadAsStringAsync();
+    }
+
     public static async Task WriteFormattedJsonAsync(string payload, string outputFile)
     {
         var formatted = JsonSerializer.Serialize(
